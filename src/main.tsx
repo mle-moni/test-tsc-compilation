@@ -3,13 +3,17 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { initReactI18next } from "react-i18next";
 import { App } from "./App";
+import anotherTestEn from "./locales/en/anotherTest.json";
 import commonEn from "./locales/en/common.json";
+import heheEn from "./locales/en/hehe.json";
 import loginEn from "./locales/en/login.json";
 import menuEn from "./locales/en/menu.json";
 import mobileEn from "./locales/en/mobile.json";
 import sampleEn from "./locales/en/sample.json";
 import userErrorsEn from "./locales/en/userErrors.json";
+import anotherTestFr from "./locales/fr/anotherTest.json";
 import commonFr from "./locales/fr/common.json";
+import heheFr from "./locales/fr/hehe.json";
 import loginFr from "./locales/fr/login.json";
 import menuFr from "./locales/fr/menu.json";
 import mobileFr from "./locales/fr/mobile.json";
@@ -24,6 +28,8 @@ export const resources = {
     sample: sampleFr,
     mobile: mobileFr,
     userErrors: userErrorsFr,
+    hehe: heheFr,
+    anotherTest: anotherTestFr,
   },
   en: {
     menu: menuEn,
@@ -32,6 +38,8 @@ export const resources = {
     sample: sampleEn,
     mobile: mobileEn,
     userErrors: userErrorsEn,
+    hehe: heheEn,
+    anotherTest: anotherTestEn,
   },
 };
 
@@ -49,16 +57,3 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <App />
   </React.StrictMode>
 );
-
-declare module "react-i18next" {
-  interface CustomTypeOptions {
-    resources: {
-      menu: typeof menuEn;
-      common: typeof commonEn;
-      login: typeof loginEn;
-      sample: typeof sampleEn;
-      mobile: typeof mobileEn;
-      userErrors: typeof userErrorsEn;
-    };
-  }
-}
