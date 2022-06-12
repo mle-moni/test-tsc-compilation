@@ -7,6 +7,8 @@ import mobileEn from "./locales/en/mobile.json";
 import sampleEn from "./locales/en/sample.json";
 import userErrorsEn from "./locales/en/userErrors.json";
 
+type ValueOf<T> = T[keyof T];
+
 declare module "react-i18next" {
   interface CustomTypeOptions {
     resources: {
@@ -21,17 +23,9 @@ declare module "react-i18next" {
     };
   }
 
-  type I18nResource = keyof CustomTypeOptions["resources"];
+  type RessourceKey = keyof CustomTypeOptions["resources"];
 
-  type I18nKey =
-    | keyof CustomTypeOptions["resources"]["common"]
-    | keyof CustomTypeOptions["resources"]["login"]
-    | keyof CustomTypeOptions["resources"]["menu"]
-    | keyof CustomTypeOptions["resources"]["sample"]
-    | keyof CustomTypeOptions["resources"]["mobile"]
-    | keyof CustomTypeOptions["resources"]["userErrors"]
-    | keyof CustomTypeOptions["resources"]["hehe"]
-    | keyof CustomTypeOptions["resources"]["anotherTest"];
-
-  type AllI18nKey = Exclude<TFuncKey<Namespace<I18nResource>>, I18nKey>;
+  type AllI18nKeys = ValueOf<{
+    [K in RessourceKey]: `${K}:${keyof CustomTypeOptions["resources"][K]}`;
+  }>;
 }
