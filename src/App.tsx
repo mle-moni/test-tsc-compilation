@@ -1,9 +1,10 @@
-import { AllI18nKeys, useTranslation } from "react-i18next";
+import { AllKeysUnion } from "./locales/AllKeysUnion";
+import { useTranslationWrapper } from "./locales/i18nWrapper";
 
 export const App = () => {
-  const { t } = useTranslation();
+  const { t } = useTranslationWrapper();
 
-  const keys: AllI18nKeys[] = [
+  const keys: AllKeysUnion[] = [
     "anotherTest:anotherTest-100",
     "hehe:hehe-30",
     "login:login-103",
