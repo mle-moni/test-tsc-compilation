@@ -2,13 +2,9 @@ import { i18n as I18nInterface } from "i18next";
 import { useTranslation as useTranslationOriginal } from "react-i18next";
 import { AllKeysUnion } from "./AllKeysUnion";
 
-export type NamespaceKey = AllKeysUnion extends `${infer N}:${infer _}`
-  ? N
-  : never;
-
 export type TFunctionWrapper = (key: AllKeysUnion, options?: unknown) => string;
 
-type UseTranslationResponse = {
+export type UseTranslationResponse = {
   t: TFunctionWrapper;
   i18n: I18nInterface;
   ready: boolean;
